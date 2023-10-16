@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -39,7 +41,7 @@ public class WordTower : MonoBehaviour
     /// <returns></returns>
 
     //KIEM TRA LETTER VOI TU TIEP THEO
-    public bool Check(char checkLetter, string _parentWord)
+    public void Check(char checkLetter, string _parentWord)
     {
         int index = wordTower.IndexOf(_parentWord);
 
@@ -56,7 +58,7 @@ public class WordTower : MonoBehaviour
                 gameManager.WinGame(); // time.timeScale, hien thi UI win
             }
 
-            return true;
+            //return true;
         }
          
         else
@@ -69,11 +71,15 @@ public class WordTower : MonoBehaviour
             }
 
 
-            return false;
+            //return false;
         }
-        
     }
 
+    public Transform TransForm(char checkLetter, string _parentWord)
+    {
+        int index = wordTower.IndexOf(_parentWord);
 
+        return wordHandlers[index + 1].letterHandlers[wordHandlers[index + 1]._hiddenIndex].transform;
+    }
 
 }

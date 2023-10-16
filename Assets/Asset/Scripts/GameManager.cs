@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public Camera _camera;
+    public GameObject _camera;
     private UIManager _UIManager;
     private UIHealth _UIHealth;
     private void Start()
     {
         _UIHealth = GetComponent<UIHealth>();
         _UIManager = GetComponent<UIManager>();
-        _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        //_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         _UIHealth._Update();
 
     }

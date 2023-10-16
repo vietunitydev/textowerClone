@@ -23,9 +23,17 @@ public class CubeDotween : MonoBehaviour
         Vector3 midPoint = (startTransform.position + endTransform.position) / 2;
         midPoint -= Vector3.forward * parabolaHeight;
 
-        // Di chuy?n ??i t??ng theo ???ng parabol
+        //// Di chuy?n ??i t??ng theo ???ng parabol
+        //transform.DOPath(new Vector3[] { startTransform.position, midPoint, endTransform.position }, duration, PathType.CatmullRom)
+        //    .SetEase(Ease.Linear);
+
         transform.DOPath(new Vector3[] { startTransform.position, midPoint, endTransform.position }, duration, PathType.CatmullRom)
-            .SetEase(Ease.Linear);
+        .SetEase(Ease.Linear)
+        .OnComplete(() =>
+        {
+            // Ho?t ??ng hoàn t?t, ??t active(false)
+            gameObject.SetActive(false);
+        });
     }
 
    

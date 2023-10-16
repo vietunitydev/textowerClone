@@ -12,11 +12,6 @@ public class UIHealth : MonoBehaviour
     public Image[] fullHearts;
     public Image[] emptyHearts;
 
-    ////public Sprite fullHealth;
-    ////public Sprite emptyhealth;
-    //public GameObject fullHealth;
-    //public GameObject emptyHealth;
-
     private void Start()
     {
         MaxHealth = 6;

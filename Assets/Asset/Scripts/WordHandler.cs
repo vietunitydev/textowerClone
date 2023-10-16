@@ -20,6 +20,7 @@ public class WordHandler : MonoBehaviour
     private void Start()
     {
         Init();
+
     }
     
     private void Init()
