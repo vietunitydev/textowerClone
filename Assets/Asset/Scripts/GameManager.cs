@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject _camera;
+    public CubeDotween _cubeDotween;
     private UIManager _UIManager;
     private UIHealth _UIHealth;
     private void Start()
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
     public void UpdateCamera()
     {
         _camera.transform.position = new Vector3(_camera.transform.position.x, _camera.transform.position.y + 1.5f, _camera.transform.position.z);
-
+        _cubeDotween.camMove();
     }
     // WIN 
     public void WinGame()

@@ -13,11 +13,11 @@ public class WordTower : MonoBehaviour
 
     [SerializeField] private List<WordHandler> wordHandlers = new List<WordHandler>();
     public GameManager gameManager;
+
+
     private void Start()
     {
-        
-        LoadWord();
-       
+        LoadWord(); 
     }
 
     //LOAD TU VAO LIST
@@ -31,21 +31,9 @@ public class WordTower : MonoBehaviour
     }
 
 
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="checkLetter"></param>
-    /// <param name="_parentWord"></param>
-    /// <returns></returns>
-
-    //KIEM TRA LETTER VOI TU TIEP THEO
     public void Check(char checkLetter, string _parentWord)
     {
         int index = wordTower.IndexOf(_parentWord);
-
-        
 
         if (wordHandlers[index + 1].CheckWord(checkLetter))  //tham chieu den WordHandler tiep theo
         {
@@ -55,27 +43,26 @@ public class WordTower : MonoBehaviour
 
             if(index == 8) // so luong cua word trong List word
             {
-                gameManager.WinGame(); // time.timeScale, hien thi UI win
+                gameManager.WinGame(); 
             }
 
-            //return true;
+           
         }
          
         else
         {
             gameManager.SetCurrentHealth();
-            //wordHandlers[index].letterHandlers[hiddenIndexList[index]].SetinActiveWord();
+           
             if (gameManager.GetHeath()==0)
             {
                 gameManager.LoseGame();
             }
 
-
-            //return false;
         }
     }
 
-    public Transform TransForm(char checkLetter, string _parentWord)
+    public Transform ReturnTranformOfHiddenNextLetter
+        (char checkLetter, string _parentWord)
     {
         int index = wordTower.IndexOf(_parentWord);
 

@@ -185,7 +185,7 @@ MonoBehaviour:
   startTransform: {fileID: 3378217673083532372}
   endTransform: {fileID: 0}
   parabolaHeight: 2
-  duration: 0.5
+  duration: 0.3
 --- !u!114 &7463838578804154556 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5288518126019057161, guid: 27790ec7d20297e4dbc226bf34ce6eb3, type: 3}
@@ -321,7 +321,7 @@ MonoBehaviour:
   startTransform: {fileID: 4024943231037626611}
   endTransform: {fileID: 0}
   parabolaHeight: 2
-  duration: 0.5
+  duration: 0.3
 --- !u!4 &4024943231037626611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4962646100656865, guid: 27790ec7d20297e4dbc226bf34ce6eb3, type: 3}
@@ -473,7 +473,7 @@ MonoBehaviour:
   startTransform: {fileID: 5285993775077508606}
   endTransform: {fileID: 0}
   parabolaHeight: 2
-  duration: 0.5
+  duration: 0.3
 --- !u!4 &5285993775077508606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4962646100656865, guid: 27790ec7d20297e4dbc226bf34ce6eb3, type: 3}
@@ -603,4 +603,4 @@ MonoBehaviour:
   startTransform: {fileID: 2155209014429372393}
   endTransform: {fileID: 0}
   parabolaHeight: 2
-  duration: 0.5
+  duration: 0.3

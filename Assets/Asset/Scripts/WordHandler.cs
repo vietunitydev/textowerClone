@@ -72,9 +72,8 @@ public class WordHandler : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
-            //if (letterHandlers[i]._letter == checkLetter) letterHandlers[i].SetinActiveWord();
+            
             letterHandlers[i].Display(' ');
-         
         }
     } 
     

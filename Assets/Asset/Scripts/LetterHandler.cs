@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class LetterHandler : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class LetterHandler : MonoBehaviour
     [SerializeField] public char _letter; // 
     [SerializeField] public int _indexletter;
     private string _parentWord; //tu nay thuoc tu nao
-    [SerializeField] WordTower Tower; // tham chieu den tower
+    [SerializeField] public  WordTower Tower; // tham chieu den tower
     public CubeDotween _cubeDotween;
 
     private void Start()
@@ -61,15 +62,10 @@ public class LetterHandler : MonoBehaviour
     {
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
-        _cubeDotween.endTransform = Tower.TransForm(checkLetter,_parentWord);
-        _cubeDotween.moveTo();
+        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _parentWord);
 
-        Tower.Check(checkLetter, _parentWord);
-        //if (!Tower.Check(checkLetter, _parentWord)) //neu khong check dung
-        //{
+        _cubeDotween.MoveToHiddenLetter(checkLetter,_parentWord);
 
-        //    //letter.SetinActiveWord();
-        //}
 
     }
     
