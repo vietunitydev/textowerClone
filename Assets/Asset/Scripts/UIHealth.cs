@@ -18,7 +18,7 @@ public class UIHealth : MonoBehaviour
         currenHealth = 3;
 
     }
-    public void _Update()
+    public void UpdateHealth()
     {
         for(int i = 0; i < fullHearts.Length; i++)
         {

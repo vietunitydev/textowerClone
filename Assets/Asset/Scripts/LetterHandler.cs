@@ -10,14 +10,20 @@ public class LetterHandler : MonoBehaviour
     [SerializeField] private Text lable; 
     [SerializeField] public char _letter; // 
     [SerializeField] public int _indexletter;
+
+    public ChangeColor letterDefault;
     private string _parentWord; //tu nay thuoc tu nao
     [SerializeField] public  WordTower Tower; // tham chieu den tower
     public CubeDotween _cubeDotween;
+    
 
     private void Start()
     {
         Tower = FindObjectOfType<WordTower>();
         _cubeDotween = GetComponent<CubeDotween>();
+        gameObject.GetComponent<ChangeColor>();
+        
+        //DisplayColorYellow();
     }
 
     public void Display(char letter)
@@ -72,6 +78,20 @@ public class LetterHandler : MonoBehaviour
     private void OnValidate()
     {
         Display(_letter);
+    }
+
+    public void DisplayColorGreen()
+    {
+
+        letterDefault.SetMaterialGreen();
+    }
+    public void DisplayColorYellow() 
+    { 
+        letterDefault.SetMaterialYelllow();
+    }
+    public void DisplayCollorBlue()
+    {
+        letterDefault.SetMaterialBlue();
     }
 
 }

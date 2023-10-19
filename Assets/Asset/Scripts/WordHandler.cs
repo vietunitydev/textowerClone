@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
@@ -20,32 +21,36 @@ public class WordHandler : MonoBehaviour
     private void Start()
     {
         Init();
-
     }
     
     private void Init()
     {
         
         letters = new List<char>(_word.ToCharArray());
-        for(int i = 0; i < letterHandlers.Count; i++)
-        {     
+        
+        for(int i = 0; i < letterHandlers.Count && i < letters.Count; i++)
+        {
+            Debug.Log(letters[i]);
             var letter = letters[i];
             var letterHandler = letterHandlers[i];
 
-            if(i == _hiddenIndex)
+            Debug.Log(letter);
+
+            if (i == _hiddenIndex)
             {
                 //gameManager.SetinActiveHiddenLetter(letterHandlers[i]);
             }
 
-            letterHandler.SetLetter(letter, i ,_word, i == _hiddenIndex);
-         
-        }       
+            letterHandler.SetLetter(letter, i, _word, i == _hiddenIndex);
+
+        }
     }
     
     internal void SetWord(string word, int hiddenIndex)
     {
         _word = word;
         _hiddenIndex = hiddenIndex;
+        Debug.Log(_word);
     }
     
 
@@ -72,8 +77,8 @@ public class WordHandler : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
-            
             letterHandlers[i].Display(' ');
+            letterHandlers[i].DisplayCollorBlue();
         }
     } 
     
