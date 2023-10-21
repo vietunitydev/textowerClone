@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +17,7 @@ public class CubeDotween : MonoBehaviour
     {
         startTransform = transform;
         letter = GetComponent<LetterHandler>();
+
     }
 
     public void MoveToHiddenLetter(char checkLetter, string _parentWord)
@@ -46,5 +47,21 @@ public class CubeDotween : MonoBehaviour
         transform.DOMove(endpoi, 1f);
     }
 
-   
+    
+
+    public void shakeObject()
+    {
+        // Sử dụng DOPunchPosition để tạo hiệu ứng rung
+        transform.DOShakePosition(0.5f, 0.5f, 10 ,1f);
+    }
+    public void shakeObjectifTure()
+    {
+        Vector3 tran = startTransform.position;
+        Vector3 midPoint = (startTransform.position + tran) / 2;
+        midPoint += Vector3.forward * 2;
+
+        //Vector3 midPoint = new Vector3();
+
+        transform.DOPath(new Vector3[] { startTransform.position, midPoint, tran }, duration, PathType.CatmullRom).SetEase(Ease.Linear);
+    }
 }

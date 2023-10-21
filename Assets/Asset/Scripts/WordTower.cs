@@ -44,6 +44,7 @@ public class WordTower : MonoBehaviour
                 gameManager.WinGame();
                 //Time.timeScale = 0f;
             }
+            gameManager.shakeObjectifTure(); 
             wordHandlers[index].HiddenWord(checkLetter); // hidden word was matched
             gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween) 
             gameManager.SetColor();
@@ -52,7 +53,7 @@ public class WordTower : MonoBehaviour
          
         else
         {
-
+            gameManager.shakeObject();
             gameManager.PlayExplodeParticalSystem();
             gameManager.SetCurrentHealth();
            

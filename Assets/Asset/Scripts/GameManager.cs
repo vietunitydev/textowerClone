@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
             nextWord = _wordTower.wordHandlers[currentIndex + 1];
             for (int i = 0; i < 4; i++)
             {
+                
                 currentWord.letterHandlers[i].DisplayColorGreen();
                 nextWord.letterHandlers[i].DisplayColorYellow();
 
@@ -85,6 +86,23 @@ public class GameManager : MonoBehaviour
         _positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
         _particalsystemGameObject.transform.position = _positionParticalsystem.position;
         _particleSystem.Play();
+        
     }
 
+    public void shakeObject()
+    {
+        //shake cube if false check 
+        for (int i = 0; i < 4; i++)
+        {
+            nextWord.letterHandlers[i]._cubeDotween.shakeObject();
+        }
+    }
+
+    public void shakeObjectifTure()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            nextWord.letterHandlers[i]._cubeDotween.shakeObjectifTure();
+        }
+    }
 }
