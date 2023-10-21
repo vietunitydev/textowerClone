@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class LetterHandler : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class LetterHandler : MonoBehaviour
         }
     }
 
-    //set active va set Inactive
+    //set active va set inactive
     internal void SetActiveWord()
     {
         gameObject.SetActive(true);
@@ -68,7 +69,11 @@ public class LetterHandler : MonoBehaviour
     {
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
-        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _parentWord);
+        if (_indexletter < 8)
+        {
+            _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _parentWord);
+        }
+        else _cubeDotween.endTransform = transform;
 
         _cubeDotween.MoveToHiddenLetter(checkLetter,_parentWord);
 

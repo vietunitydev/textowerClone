@@ -66,8 +66,7 @@ public class WordHandler : MonoBehaviour
         }
         else
         {
-            
-            Debug.Log("WordHandler **** Tru mau "); // code tru mau o day
+           
             return false;
         }
     }

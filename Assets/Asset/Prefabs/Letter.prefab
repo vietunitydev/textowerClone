@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174983606702063106}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.39, y: 0, z: 0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   lable: {fileID: 701313233810103180}
   _letter: 48
   _indexletter: 0
+  _system: {fileID: 0}
   letterDefault: {fileID: 0}
   Tower: {fileID: 0}
   _cubeDotween: {fileID: 0}

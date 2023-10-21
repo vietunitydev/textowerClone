@@ -25,16 +25,19 @@ public class CubeDotween : MonoBehaviour
         Vector3 midPoint = (startTransform.position + endTransform.position) / 2;
         midPoint -= Vector3.forward * parabolaHeight;
 
-        
+
 
         transform.DOPath(new Vector3[] { startTransform.position, midPoint, endTransform.position }, duration, PathType.CatmullRom)
         .SetEase(Ease.Linear)
         .OnComplete(() =>
-        {         
+        {
             gameObject.SetActive(false);
             //hien ra hiiden next letter
+            //letter.ActivePartical();
             letter.Tower.Check(checkLetter, _parentWord);
+            
         });
+        
     }
 
     public void camMove()

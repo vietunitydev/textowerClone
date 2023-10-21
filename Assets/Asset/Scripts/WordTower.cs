@@ -42,7 +42,7 @@ public class WordTower : MonoBehaviour
             if (index == 8) // so luong cua word trong List word
             {
                 gameManager.WinGame();
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
             }
             wordHandlers[index].HiddenWord(checkLetter); // hidden word was matched
             gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween) 
@@ -52,6 +52,8 @@ public class WordTower : MonoBehaviour
          
         else
         {
+
+            gameManager.PlayExplodeParticalSystem();
             gameManager.SetCurrentHealth();
            
             if (gameManager.GetHeath()==0)

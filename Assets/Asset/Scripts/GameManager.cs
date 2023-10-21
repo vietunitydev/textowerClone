@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
@@ -7,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject _followCamera;
+    public GameObject _particalsystemGameObject;
+    private ParticleSystem _particleSystem;
+    private Transform _positionParticalsystem;
     public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
@@ -17,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _particleSystem = _particalsystemGameObject.GetComponent<ParticleSystem>();
+        _particleSystem.Stop();
         _uiHealth = GetComponent<UIHealth>();
         _uiManager = GetComponent<UIManager>();
         _uiHealth.UpdateHealth();
@@ -54,18 +61,30 @@ public class GameManager : MonoBehaviour
 
     public void SetColor()
     {
-        currentWord = _wordTower.wordHandlers[currentIndex];
-        nextWord = _wordTower.wordHandlers[currentIndex + 1];
-        for (int i = 0; i < 4; i++)
+        try
         {
-            currentWord.letterHandlers[i].DisplayColorGreen();
-            nextWord.letterHandlers[i].DisplayColorYellow();
-        
-        }
-        
-        currentIndex += 1;
-        
-    }
+            currentWord = _wordTower.wordHandlers[currentIndex];
+            nextWord = _wordTower.wordHandlers[currentIndex + 1];
+            for (int i = 0; i < 4; i++)
+            {
+                currentWord.letterHandlers[i].DisplayColorGreen();
+                nextWord.letterHandlers[i].DisplayColorYellow();
 
+            }
+            currentIndex += 1;
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine("love hai dung:", ex.Message);
+        }
+    }
+    
+    public void PlayExplodeParticalSystem()
+    {
+            
+        _positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
+        _particalsystemGameObject.transform.position = _positionParticalsystem.position;
+        _particleSystem.Play();
+    }
 
 }
