@@ -1,0 +1,14 @@
+name
+blue
+ball
+road
+rose
+fish
+high
+hair
+park
+star
+tree
+view
+wind
+duck

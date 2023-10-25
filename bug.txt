@@ -1,0 +1,7 @@
+- check đúng -> không di chuyển
+ check đúng lần hai -> di chuyển = dotween
+=>>> nghi là :
+
+- check sai -> từ letter [0->hidden] có dotween shake nhưng những letter sau thì không có
+
+- sau khi check đúng lần 1, chưa di chuyển camera, chưa di chuyển sang từ mới => check sai => không trừ máu. shake đến cuối 
