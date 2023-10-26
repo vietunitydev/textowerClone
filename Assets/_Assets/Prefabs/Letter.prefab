@@ -443,7 +443,6 @@ MonoBehaviour:
   lable: {fileID: 701313233810103180}
   _letter: 48
   _indexletter: 0
-  _system: {fileID: 0}
   letterDefault: {fileID: 0}
   Tower: {fileID: 0}
   _cubeDotween: {fileID: 0}

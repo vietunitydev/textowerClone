@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
                 currentWord.letterHandlers[i].DisplayColorGreen();
                 nextWord.letterHandlers[i].DisplayColorYellow();
 
+                Debug.Log("setcolor" + i);
+
             }
             currentIndex += 1;
         }
@@ -82,13 +84,14 @@ public class GameManager : MonoBehaviour
     }
     
     public void PlayExplodeParticalSystem()
-    {
-            
+    {            
         _positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
         _particalsystemGameObject.transform.position = _positionParticalsystem.position;
-        _particleSystem.Play();
-        
+        _particleSystem.Play();   
     }
+    
+
+    // co the la do 
 
     public void shakeObject()
     {
@@ -96,7 +99,13 @@ public class GameManager : MonoBehaviour
         //shake cube if false check 
         for (int i = 0; i < 4; i++)
         {
-            nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenFalse();
+            if (nextWord.letterHandlers[i] != null)
+            {
+                Debug.Log("shakeObject" + i);
+                nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenFalse();
+                
+            }
+            
         }
         Debug.Log("font ----- game manager . shakeObjectifTure()");
     }
@@ -106,13 +115,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("font ----- game manager . shakeObjectifTure()");
         for (int i = 0; i < 4; i++)
         {
-            nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenTure();
+            if (nextWord.letterHandlers[i] != null)
+            {
+                Debug.Log("shakeObject" + i);
+                nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenTure();
+                
+            }
         }
         Debug.Log(" back ---- game manager . shakeObjectifTure()");
     }
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1");   
     }
 }

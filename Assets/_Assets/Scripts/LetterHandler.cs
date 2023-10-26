@@ -9,22 +9,22 @@ using UnityEngine.UIElements;
 public class LetterHandler : MonoBehaviour
 {
     [SerializeField] private Text lable; 
-    [SerializeField] public char _letter; // 
-    [SerializeField] public int _indexletter;
+    public char _letter; // 
+    public int _indexletter;
 
     public ChangeColor letterDefault;
     private string _parentWord; //tu nay thuoc tu nao
-    [SerializeField] public  WordTower Tower; // tham chieu den tower
+    public  WordTower Tower; 
     public CubeDotween _cubeDotween;
     
 
-    private void Start()
+    private void Awake()
     {
         Tower = FindObjectOfType<WordTower>();
+        Debug.Log("***********" + Tower.name + " -------- "+_letter);
         _cubeDotween = GetComponent<CubeDotween>();
+
         gameObject.GetComponent<ChangeColor>();
-        
-        //DisplayColorYellow();
     }
 
     public void Display(char letter)

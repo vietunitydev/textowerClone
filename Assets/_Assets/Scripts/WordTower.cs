@@ -25,15 +25,16 @@ public class WordTower : MonoBehaviour
     }
     private void Start()
     {
-       
+        
     }
-    //LOAD TU VAO LIST
+
     private void LoadWord()
     {
         for(int i = 0; i < wordHandlers.Count; i++) 
         {
             var word = wordTower[i];
-            wordHandlers[i].SetWord(word, hiddenIndexList[i]);           
+            wordHandlers[i].SetWord(word, hiddenIndexList[i]);
+            
         }
     }
 
@@ -50,18 +51,17 @@ public class WordTower : MonoBehaviour
                
             }
 
-            gameManager.shakeObjectifTure();
-            gameManager.SetColor();
+            gameManager.shakeObjectifTure();  // for(0-3)
+            gameManager.SetColor(); // for (0-3)
             wordHandlers[index].HiddenWord(checkLetter); // hiSdden word was matched
-            gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween) 
+            gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween)
     
         }
          
         else
         {
             gameManager.shakeObject();
-            
-            //gameManager.PlayExplodeParticalSystem();
+
             gameManager.SetCurrentHealth();
            
             if (gameManager.GetHeath()==0)

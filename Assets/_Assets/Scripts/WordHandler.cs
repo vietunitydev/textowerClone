@@ -50,7 +50,6 @@ public class WordHandler : MonoBehaviour
     {
         _word = word;
         _hiddenIndex = hiddenIndex;
-        //Debug.Log(_word);
     }
     
 
@@ -59,8 +58,7 @@ public class WordHandler : MonoBehaviour
     {
         Debug.Log("world hander . check()");
         if (checkWord == letters[_hiddenIndex])
-        {
-          
+        {          
             letterHandlers[_hiddenIndex].SetActiveWord();
             letterHandlers[_hiddenIndex].Display(checkWord);
             return true;
@@ -77,8 +75,11 @@ public class WordHandler : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
+
             letterHandlers[i].Display(' ');
             letterHandlers[i].DisplayCollorBlue();
+
+            Debug.Log("Hiddenword" + i);
         }
     } 
     
