@@ -61,11 +61,12 @@ public class WordHandler : MonoBehaviour
         {          
             letterHandlers[_hiddenIndex].SetActiveWord();
             letterHandlers[_hiddenIndex].Display(checkWord);
+            Debug.Log("world hander . check() -- true");
             return true;
         }
         else
         {
-           
+            Debug.Log("world hander . check() -- false");
             return false;
         }
     }

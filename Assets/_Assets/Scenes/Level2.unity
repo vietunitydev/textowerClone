@@ -12322,6 +12322,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3094425193104871035, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1551385187}
+    - target: {fileID: 3094425193104871035, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6659987154118571153, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0

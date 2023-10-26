@@ -47,8 +47,9 @@ public class WordTower : MonoBehaviour
         {
             if (index == wordTower.Count-2 ) // so luong cua word trong List word
             {
+
                 gameManager.WinGame();
-               
+                Debug.Log("win game **** ");
             }
 
             gameManager.shakeObjectifTure();  // for(0-3)

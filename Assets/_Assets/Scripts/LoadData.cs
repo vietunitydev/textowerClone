@@ -9,51 +9,58 @@ public class LoadData : MonoBehaviour
     TextAsset[] wordsFilePath;
     [SerializeField]
     TextAsset[] hiddenFilePath;
+    public GameManager gameManager;
 
-    static int levelIndex=0;
 
-    public void ReadFile(List<string> wordTower, List<int> hiddenIndexList)
+    private void Awake()
     {
-            string words = wordsFilePath[levelIndex].text;
-            Debug.Log(words);
-            string hiddens = hiddenFilePath[levelIndex].text;
-            Debug.Log(hiddens);
+        Debug.Log("getindexlevel = " + GetIndexLevel());
 
-        try
-        {
-            using (StreamReader namesReader = new StreamReader(words))
-            using (StreamReader agesReader = new StreamReader(hiddens))
-            {    
-                string word;
-                string hidden;
-                while ((word = namesReader.ReadLine()) != null && (hidden = agesReader.ReadLine()) != null)
-                {
-                    wordTower.Add(word);
-                    if (int.TryParse(hidden, out int age))
-                    {
-                        hiddenIndexList.Add(age);
-                    }
-                    else
-                    {
-                        Debug.Log("fault");
-                    }
-                }
-            }
-            for (int i = 0; i < wordTower.Count; i++)
-            {
-                Debug.Log($" {wordTower[i]}, {hiddenIndexList[i]}");
-            }
-        }
-        catch (IOException e)
-        {
-            Debug.Log("khong doc duoc tep tin: " + e.Message);
-        }
     }
+
+    //public void ReadFile(List<string> wordTower, List<int> hiddenIndexList)
+    //{
+    //        string words = wordsFilePath[i].text;
+    //        Debug.Log(words);
+    //        string hiddens = hiddenFilePath[i].text;
+    //        Debug.Log(hiddens);
+
+    //    try
+    //    {
+    //        using (StreamReader namesReader = new StreamReader(words))
+    //        using (StreamReader agesReader = new StreamReader(hiddens))
+    //        {    
+    //            string word;
+    //            string hidden;
+    //            while ((word = namesReader.ReadLine()) != null && (hidden = agesReader.ReadLine()) != null)
+    //            {
+    //                wordTower.Add(word);
+    //                if (int.TryParse(hidden, out int age))
+    //                {
+    //                    hiddenIndexList.Add(age);
+    //                }
+    //                else
+    //                {
+    //                    Debug.Log("fault");
+    //                }
+    //            }
+    //        }
+    //        for (int i = 0; i < wordTower.Count; i++)
+    //        {
+    //            Debug.Log($" {wordTower[i]}, {hiddenIndexList[i]}");
+    //        }
+    //    }
+    //    catch (IOException e)
+    //    {
+    //        Debug.Log("khong doc duoc tep tin: " + e.Message);
+    //    }
+    //}
 
     public void ReadFileText(List<string> wordTower, List<int> hiddenIndexList)
     {
-        string words = wordsFilePath[levelIndex].text;
-        string hiddens = hiddenFilePath[levelIndex].text;
+        Debug.Log(GetIndexLevel());
+        string words = wordsFilePath[GetIndexLevel()].text;
+        string hiddens = hiddenFilePath[GetIndexLevel()].text;
 
         string[] word = words.Split('\n');
         string[] hidden = hiddens.Split('\n');
@@ -66,5 +73,19 @@ public class LoadData : MonoBehaviour
             hiddenIndexList.Add(int.Parse(h));
         }
 
+    }
+
+    public void SetIndexLevel(int value)
+    {
+        PlayerPrefs.SetInt("level", value);
+        PlayerPrefs.Save();
+    }
+
+    public int GetIndexLevel()
+    {
+        Debug.Log("5 x x x x ");
+        int i = PlayerPrefs.GetInt("level", 0);
+
+        return i;
     }
 }

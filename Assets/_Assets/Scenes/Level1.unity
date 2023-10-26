@@ -12061,12 +12061,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2397446454092298690, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130.8
+      value: 130.79999
       objectReference: {fileID: 0}
-    - target: {fileID: 4312729399297655740, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 2397446454092298690, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.799805
       objectReference: {fileID: 0}
+    - target: {fileID: 3094425193104871035, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1451289329}
     - target: {fileID: 6659987154118571153, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12147,34 +12151,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7368815604998949553, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4599803789638775865, guid: 5b2629a02a00a884ea2c5e738796cdf2, type: 3}
-    - target: {fileID: 7368815604998949553, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReloadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7775812464566614805, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8849398844707138349, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8858688291973500175, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8858688291973500175, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3523296068905728995, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
-    - {fileID: 5747138168690467676, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}

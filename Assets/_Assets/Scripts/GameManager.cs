@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    
+    public int _levelIndex;
     public GameObject _followCamera;
     public GameObject _particalsystemGameObject;
+
     private ParticleSystem _particleSystem;
     private Transform _positionParticalsystem;
+
     public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
@@ -20,6 +23,8 @@ public class GameManager : MonoBehaviour
     public WordTower _wordTower;
     public WordHandler currentWord;
     public WordHandler nextWord;
+    public LoadData loadData;
+
 
     private void Start()
     {
@@ -40,6 +45,12 @@ public class GameManager : MonoBehaviour
     // WIN 
     public void WinGame()
     {
+        _levelIndex = loadData.GetIndexLevel()+1;
+
+        Debug.Log("_levelIndex = " + _levelIndex);
+        loadData.SetIndexLevel(_levelIndex);
+        Debug.Log("*** " + loadData.GetIndexLevel());
+
         _uiManager.Win();
     }
     //LOSE
@@ -129,4 +140,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");   
     }
+
+    public void LoadNextScene()
+    {
+        LoadScenee._LoadScene(loadData.GetIndexLevel());
+    }
+
 }

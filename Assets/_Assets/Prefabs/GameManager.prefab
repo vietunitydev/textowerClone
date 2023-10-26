@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4116076bebd3438293cffaa3bee72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelIndex: 0
   _followCamera: {fileID: 0}
   _particalsystemGameObject: {fileID: 1578004724682799309, guid: 1394929838611e5468d96dd37af25c92, type: 3}
   _cubeDotween: {fileID: 0}
@@ -54,6 +55,7 @@ MonoBehaviour:
   _wordTower: {fileID: 0}
   currentWord: {fileID: 0}
   nextWord: {fileID: 0}
+  loadData: {fileID: 3531802184161940969}
 --- !u!114 &4922903452690895646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +123,4 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 69c3721264830714d9ead3dfaa9bedb8, type: 3}
   - {fileID: 4900000, guid: fbf35287a4dce0547a6b0642af89d92b, type: 3}
   - {fileID: 4900000, guid: 5bbbf0808b303914ea3079d6aa24c305, type: 3}
+  gameManager: {fileID: 4599803789638775865}
