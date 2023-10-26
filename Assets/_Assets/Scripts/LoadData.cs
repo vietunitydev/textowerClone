@@ -10,7 +10,7 @@ public class LoadData : MonoBehaviour
     [SerializeField]
     TextAsset[] hiddenFilePath;
 
-    static int levelIndex=1;
+    static int levelIndex=0;
 
     public void ReadFile(List<string> wordTower, List<int> hiddenIndexList)
     {
