@@ -20,7 +20,7 @@ public class WordTower : MonoBehaviour
     private void Awake()
     {
         //loadData.ReadFile(wordTower, hiddenIndexList);
-        loadData.ReadFileText(wordTower, hiddenIndexList);
+        loadData.ReadFileText(wordTower, hiddenIndexList);  
         LoadWord();
     }
     private void Start()

@@ -4,6 +4,9 @@
 
 - check sai -> từ letter [0->hidden] có dotween shake nhưng những letter sau thì không có
 
-- sau khi check đúng lần 1, chưa di chuyển camera, chưa di chuyển sang từ mới => check sai => không trừ máu. shake đến cuối
+- sau khi check đúng lần 1, chưa di chuyển camera, chưa di chuyển sang từ mới => check sai => không trừ máu. shake đến cuối 
 
-=>>>> đã fix bug reload nhưng không tham chiếu đến được tower, cubedotween => thay start bằng awake 
+
+=>> la do khi chay for() trong game manager lỗi null...
+
+
