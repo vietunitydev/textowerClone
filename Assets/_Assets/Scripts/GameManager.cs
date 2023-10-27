@@ -138,7 +138,8 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene("Level1");   
+        loadData.SetIndexLevel(0);
+        SceneManager.LoadScene("Level1");
     }
 
     public void LoadNextScene()

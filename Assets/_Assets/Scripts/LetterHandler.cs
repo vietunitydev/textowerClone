@@ -21,7 +21,7 @@ public class LetterHandler : MonoBehaviour
     private void Awake()
     {
         Tower = FindObjectOfType<WordTower>();
-        Debug.Log("***********" + Tower.name + " -------- "+_letter);
+        //Debug.Log("***********" + Tower.name + " -------- "+_letter);
         _cubeDotween = GetComponent<CubeDotween>();
 
         gameObject.GetComponent<ChangeColor>();
