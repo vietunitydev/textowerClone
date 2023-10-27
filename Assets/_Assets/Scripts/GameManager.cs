@@ -138,12 +138,17 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        loadData.SetIndexLevel(0);
-        SceneManager.LoadScene("Level1");
+        LoadScenee._LoadScene(loadData.GetIndexLevel());
     }
 
     public void LoadNextScene()
     {
+        LoadScenee._LoadScene(loadData.GetIndexLevel());
+    }
+
+    public void ResetScene()
+    {
+        loadData.SetIndexLevel(0);
         LoadScenee._LoadScene(loadData.GetIndexLevel());
     }
 

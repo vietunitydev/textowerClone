@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenee : MonoBehaviour
 {
-    static string[] _sceneName = new string[] { "Level1", "Level2", "Level3" };
+    static string[] _sceneName = new string[] { "Level1", "Level2", "Level3", "Level4" };
 
     static public void _LoadScene(int index)
     {

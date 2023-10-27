@@ -5693,7 +5693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &807463960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6268,9 +6268,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2122012372391398225, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2391782539224407719, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094425193104871035, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1790204632}
+    - target: {fileID: 3094425193104871035, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextScene
       objectReference: {fileID: 0}
     - target: {fileID: 6659987154118571153, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_Pivot.x
@@ -6351,6 +6363,22 @@ PrefabInstance:
     - target: {fileID: 6659987154118571153, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865558306303033065, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1790204632}
+    - target: {fileID: 7865558306303033065, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104270014640358491, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1790204632}
+    - target: {fileID: 8104270014640358491, guid: 4cb9a1279c0a9bd4ca80ae2e377cd0d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
