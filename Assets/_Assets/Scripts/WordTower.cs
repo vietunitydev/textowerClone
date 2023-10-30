@@ -7,78 +7,101 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class WordTower : MonoBehaviour
-
 {
+    //public static WordTower instance;
+    
     private List<string> wordTower = new List<string>();
     private List<int> hiddenIndexList = new List<int>();
-
-    [SerializeField] 
     public List<WordHandler> wordHandlers = new List<WordHandler>();
     public GameManager gameManager;
     public LoadData loadData;
 
-    private void Awake()
-    {
-        //loadData.ReadFile(wordTower, hiddenIndexList);
-        loadData.ReadFileText(wordTower, hiddenIndexList);  
-        LoadWord();
-    }
+    public List<string> WordTower1 { get => wordTower; set => wordTower = value; }
+    public List<int> HiddenIndexList { get => hiddenIndexList; set => hiddenIndexList = value; }
+
     private void Start()
     {
-        
+        loadData.ReadFileText(wordTower, hiddenIndexList);
+        wordTower.Log(); // là 1 list nh?ng count b?ng 0
+        hiddenIndexList.Log(); // là 1 list nh?ng count b?ng 0
+        LoadWord();
+
     }
+    
 
     private void LoadWord()
     {
         for(int i = 0; i < wordHandlers.Count; i++) 
         {
+            //Debug.Log("*************" + wordTower[i]);
             var word = wordTower[i];
-            wordHandlers[i].SetWord(word, hiddenIndexList[i]);
-            
+            wordHandlers[i].SetWord(word, hiddenIndexList[i],i);
+            wordHandlers[i].Init();
         }
     }
 
 
-    public void Check(char checkLetter, string _parentWord)
+    public void Check(char checkLetter, int _indexParentWord)
     {
-        int index = wordTower.IndexOf(_parentWord);
+        //int index = wordTower.IndexOf(_parentWord);
 
-        if (wordHandlers[index + 1].CheckWord(checkLetter))  //tham chieu den WordHandler tiep theo
+        if (wordHandlers[_indexParentWord + 1].CheckWord(checkLetter))  //tham chieu den WordHandler tiep theo
         {
-            if (index == wordTower.Count-2 ) // so luong cua word trong List word
+            if (_indexParentWord == wordTower.Count-2 ) // so luong cua word trong List word
             {
 
                 gameManager.WinGame();
                 Debug.Log("win game **** ");
             }
 
-            gameManager.shakeObjectifTure();  // for(0-3)
+            gameManager.shakeObjectifTure();
+            gameManager.UpdateCurrentWord();
             gameManager.SetColor(); // for (0-3)
-            wordHandlers[index].HiddenWord(checkLetter); // hiSdden word was matched
+            wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched
             gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween)
-    
         }
-         
+
         else
         {
+            //StartCoroutine(WaitToNextFunc());
             gameManager.shakeObject();
-
             gameManager.SetCurrentHealth();
-           
-            if (gameManager.GetHeath()==0)
+            if (gameManager.GetHeath() == 0)
             {
                 gameManager.LoseGame();
             }
-
+            Debug.LogError("False");
         }
     }
 
-    public Transform ReturnTranformOfHiddenNextLetter
-        (char checkLetter, string _parentWord)
+    public Transform ReturnTranformOfHiddenNextLetter(char checkLetter, int _indexParentWord)
     {
-        int index = wordTower.IndexOf(_parentWord);
+        //int index = wordTower.IndexOf(_parentWord);
 
-        return wordHandlers[index + 1].letterHandlers[wordHandlers[index + 1]._hiddenIndex].transform;
+        return wordHandlers[_indexParentWord + 1].letterHandlers[wordHandlers[_indexParentWord + 1]._hiddenIndex].transform;
     }
 
+    public IEnumerator WaitToNextFunc(char checkLetter, int _indexParentWord)
+    {
+        Debug.LogError("x");
+        yield return new WaitForSeconds(0.5f);
+        Debug.LogError("x1");
+        gameManager.UpdateCurrentWord();
+        gameManager.SetColor(); // for (0-3)
+        wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched
+        gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween)
+    }
+
+    public IEnumerator WaitToNextFunc()
+    {
+        Debug.LogError("x");
+        gameManager.shakeObject();
+        yield return new WaitForSeconds(0.5f);
+        Debug.LogError("x1");
+        gameManager.SetCurrentHealth();
+        if (gameManager.GetHeath() == 0)
+        {
+            gameManager.LoseGame();
+        }
+    }
 }

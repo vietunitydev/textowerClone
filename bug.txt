@@ -9,4 +9,12 @@
 
 =>> la do khi chay for() trong game manager lỗi null...
 
+abcsdafasfd
 
+
+unity mohaviour recycle
+
+singleton pattern 
+obsever pattern
+state machine 
+strategy pattern 

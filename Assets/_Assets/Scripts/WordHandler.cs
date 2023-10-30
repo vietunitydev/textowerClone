@@ -9,21 +9,22 @@ using UnityEngine;
 
 public class WordHandler : MonoBehaviour
 {
-    [SerializeField] public string _word;
-    [SerializeField] public int _hiddenIndex;
+    public string _word;
+    public int _hiddenIndex;
+    public int _indexWord;
 
     private List<char> letters = new List<char>();
-    [SerializeField] public List<LetterHandler> letterHandlers;
+    public List<LetterHandler> letterHandlers;
     
     
     public GameManager gameManager;
 
     private void Start()
     {
-        Init();
+        //Init();
     }
     
-    private void Init()
+    public void Init()
     {
         
         letters = new List<char>(_word.ToCharArray());
@@ -35,21 +36,21 @@ public class WordHandler : MonoBehaviour
             var letterHandler = letterHandlers[i];
 
             //Debug.Log(letter);
-
             if (i == _hiddenIndex)
             {
                 //gameManager.SetinActiveHiddenLetter(letterHandlers[i]);
             }
 
-            letterHandler.SetLetter(letter, i, _word, i == _hiddenIndex);
+            letterHandler.SetLetter(letter, i, _indexWord, i == _hiddenIndex);
 
         }
     }
     
-    internal void SetWord(string word, int hiddenIndex)
+    internal void SetWord(string word, int hiddenIndex, int indexWord)
     {
         _word = word;
         _hiddenIndex = hiddenIndex;
+        _indexWord = indexWord;
     }
     
 
@@ -80,9 +81,8 @@ public class WordHandler : MonoBehaviour
             letterHandlers[i].Display(' ');
             letterHandlers[i].DisplayCollorBlue();
 
-            Debug.Log("Hiddenword" + i);
+            //Debug.Log("Hiddenword" + i);
         }
     } 
     
-
 }

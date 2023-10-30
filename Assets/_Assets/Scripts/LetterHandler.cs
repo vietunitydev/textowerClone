@@ -10,19 +10,17 @@ public class LetterHandler : MonoBehaviour
 {
     [SerializeField] private Text lable; 
     public char _letter; // 
-    public int _indexletter;
+
 
     public ChangeColor letterDefault;
-    private string _parentWord; //tu nay thuoc tu nao
+    private int _indexParentWord; //tu nay thuoc tu nao
     public  WordTower Tower; 
     public CubeDotween _cubeDotween;
     
 
-    private void Awake()
+    private void Start()
     {
         Tower = FindObjectOfType<WordTower>();
-        _cubeDotween = GetComponent<CubeDotween>();
-
         gameObject.GetComponent<ChangeColor>();
     }
 
@@ -33,12 +31,12 @@ public class LetterHandler : MonoBehaviour
     }
 
     //set tu data, neu hidden thi setsactive(false);
-    internal void SetLetter(char letter, int indexletter, string parentWord, bool hidden = false)
+    internal void SetLetter(char letter, int indexletter, int indexParentWord, bool hidden = false)
     {
 
         _letter = letter;
-        _parentWord = parentWord;
-        _indexletter = indexletter;
+        _indexParentWord = indexParentWord;
+
 
         if (!hidden)
         {
@@ -48,7 +46,6 @@ public class LetterHandler : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
-            //Display(' ');
         }
     }
 
@@ -68,14 +65,17 @@ public class LetterHandler : MonoBehaviour
     {
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
-        if (_indexletter < 13)
+
+        //var checkLetter = _letter;
+
+        if (true)
         {
-            _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _parentWord);
+               _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
         }
-        else _cubeDotween.endTransform = transform;
+        //else _cubeDotween.endTransform = transform;
 
-        _cubeDotween.MoveToHiddenLetter(checkLetter,_parentWord);
-
+        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
+        _cubeDotween.MoveToHiddenLetter(checkLetter, _indexParentWord);
 
     }
     

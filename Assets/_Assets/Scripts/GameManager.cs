@@ -8,32 +8,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
     public int _levelIndex;
     public GameObject _followCamera;
-    public GameObject _particalsystemGameObject;
 
-    private ParticleSystem _particleSystem;
-    private Transform _positionParticalsystem;
+    //public GameObject _particalsystemGameObject;
+    //private ParticleSystem _particleSystem;
+    //private Transform _positionParticalsystem;
 
     public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
     [SerializeField] private int currentIndex = 0; 
+    
     public WordTower _wordTower;
     public WordHandler currentWord;
+
     public WordHandler nextWord;
     public LoadData loadData;
-
+    
 
     private void Start()
     {
-        _particleSystem = _particalsystemGameObject.GetComponent<ParticleSystem>();
-        _particleSystem.Stop();
+        //_particleSystem = _particalsystemGameObject.GetComponent<ParticleSystem>();
+        //_particleSystem.Stop();
+
         _uiHealth = GetComponent<UIHealth>();
         _uiManager = GetComponent<UIManager>();
         _uiHealth.UpdateHealth();
         SetColor();
+        _uiManager.UpdateUILevel();
     }
 
     // CAMERA FOLLOW WORDTOWER
@@ -73,32 +76,20 @@ public class GameManager : MonoBehaviour
 
     public void SetColor()
     {
-        try
-        {
-            currentWord = _wordTower.wordHandlers[currentIndex];
-            nextWord = _wordTower.wordHandlers[currentIndex + 1];
-            for (int i = 0; i < 4; i++)
-            {
-                
-                currentWord.letterHandlers[i].DisplayColorGreen();
-                nextWord.letterHandlers[i].DisplayColorYellow();
 
-                Debug.Log("setcolor" + i);
-
-            }
-            currentIndex += 1;
-        }
-        catch (ArgumentOutOfRangeException ex)
+        for (int i = 0; i < 4; i++)
         {
-            Console.WriteLine("***", ex.Message);
+            currentWord.letterHandlers[i].DisplayColorGreen();
+            nextWord.letterHandlers[i].DisplayColorYellow();
         }
+
     }
     
     public void PlayExplodeParticalSystem()
     {            
-        _positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
-        _particalsystemGameObject.transform.position = _positionParticalsystem.position;
-        _particleSystem.Play();   
+        //_positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
+        //_particalsystemGameObject.transform.position = _positionParticalsystem.position;
+        //_particleSystem.Play();   
     }
     
 
@@ -106,19 +97,21 @@ public class GameManager : MonoBehaviour
 
     public void shakeObject()
     {
-        Debug.Log("font ----- game manager . shakeObjectifTure()");
+        Debug.Log("font ----- game manager . shakeObjectifFlalse()");
         //shake cube if false check 
         for (int i = 0; i < 4; i++)
         {
             if (nextWord.letterHandlers[i] != null)
             {
-                Debug.Log("shakeObject" + i);
-                nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenFalse();
-                
+                if ((nextWord.letterHandlers[i]._cubeDotween != null))
+                {
+                    Debug.LogWarning(nextWord.letterHandlers[i]._cubeDotween.name);
+                    Debug.Log("*");
+                    nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenFalse();
+                }
             }
-            
         }
-        Debug.Log("font ----- game manager . shakeObjectifTure()");
+        Debug.Log("back ----- game manager . shakeObjectifFlase()");
     }
 
     public void shakeObjectifTure()
@@ -128,8 +121,12 @@ public class GameManager : MonoBehaviour
         {
             if (nextWord.letterHandlers[i] != null)
             {
-                Debug.Log("shakeObject" + i);
-                nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenTure();
+                if ((nextWord.letterHandlers[i]._cubeDotween != null))
+                {
+                    Debug.LogWarning(nextWord.letterHandlers[i]._cubeDotween.name);
+                    Debug.Log("*");
+                    nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenTure();
+                }
                 
             }
         }
@@ -150,6 +147,13 @@ public class GameManager : MonoBehaviour
     {
         loadData.SetIndexLevel(0);
         LoadScenee._LoadScene(loadData.GetIndexLevel());
+    }
+
+    public void UpdateCurrentWord()
+    {
+        currentIndex += 1;
+        currentWord = _wordTower.wordHandlers[currentIndex];
+        nextWord = _wordTower.wordHandlers[currentIndex + 1];
     }
 
 }
