@@ -71,6 +71,7 @@ MonoBehaviour:
   currentWord: {fileID: 0}
   nextWord: {fileID: 0}
   loadData: {fileID: 3531802184161940969}
+  SceneNumberManager: {fileID: 0}
 --- !u!114 &4922903452690895646
 MonoBehaviour:
   m_ObjectHideFlags: 0

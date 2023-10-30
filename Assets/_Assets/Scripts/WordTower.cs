@@ -69,6 +69,7 @@ public class WordTower : MonoBehaviour
             if (gameManager.GetHeath() == 0)
             {
                 gameManager.LoseGame();
+                gameManager.MovebyPositionFollowCamera();
             }
             Debug.LogError("False");
         }
@@ -81,27 +82,4 @@ public class WordTower : MonoBehaviour
         return wordHandlers[_indexParentWord + 1].letterHandlers[wordHandlers[_indexParentWord + 1]._hiddenIndex].transform;
     }
 
-    public IEnumerator WaitToNextFunc(char checkLetter, int _indexParentWord)
-    {
-        Debug.LogError("x");
-        yield return new WaitForSeconds(0.5f);
-        Debug.LogError("x1");
-        gameManager.UpdateCurrentWord();
-        gameManager.SetColor(); // for (0-3)
-        wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched
-        gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween)
-    }
-
-    public IEnumerator WaitToNextFunc()
-    {
-        Debug.LogError("x");
-        gameManager.shakeObject();
-        yield return new WaitForSeconds(0.5f);
-        Debug.LogError("x1");
-        gameManager.SetCurrentHealth();
-        if (gameManager.GetHeath() == 0)
-        {
-            gameManager.LoseGame();
-        }
-    }
 }

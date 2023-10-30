@@ -34,8 +34,5 @@ public class UIManager : MonoBehaviour
         currentSceneName++;
         levelText.text = "Level " + currentSceneName;
     }
-    private void Start()
-    {
-        UpdateUILevel();
-    }
+  
 }

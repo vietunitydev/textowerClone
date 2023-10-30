@@ -28,4 +28,18 @@ public class SceneNumberManager : MonoBehaviour
             return -1;
         }
     }
+
+    public int GetNumberWord()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log(currentSceneName);
+        if (sceneNumbers.ContainsKey(currentSceneName))
+        {
+            return sceneNumbers[currentSceneName];
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }
