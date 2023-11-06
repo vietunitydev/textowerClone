@@ -16,7 +16,8 @@ public class LetterHandler : MonoBehaviour
     private int _indexParentWord; //tu nay thuoc tu nao
     public  WordTower Tower; 
     public CubeDotween _cubeDotween;
-    
+    [SerializeField] AudioManager _audioManager;
+
 
     private void Start()
     {
@@ -66,13 +67,13 @@ public class LetterHandler : MonoBehaviour
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
 
+        _audioManager.PlaySound(0);
         //var checkLetter = _letter;
 
         if (true)
         {
                _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
         }
-        //else _cubeDotween.endTransform = transform;
 
         _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
         _cubeDotween.MoveToHiddenLetter(checkLetter, _indexParentWord);

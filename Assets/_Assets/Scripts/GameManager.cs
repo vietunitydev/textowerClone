@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private UIManager _uiManager;
     private UIHealth _uiHealth;
     private int numberWordofScene;
-    [SerializeField] private int currentIndex = 0; 
+    [SerializeField] private int currentIndex = 0;
     
     public WordTower _wordTower;
     public WordHandler currentWord;
@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //_particleSystem = _particalsystemGameObject.GetComponent<ParticleSystem>();
-        //_particleSystem.Stop();
         
         _uiHealth = GetComponent<UIHealth>();
         _uiManager = GetComponent<UIManager>();

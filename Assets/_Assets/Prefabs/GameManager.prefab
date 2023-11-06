@@ -84,10 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0983d8850512546a9dfdf786bbac7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicText: {fileID: 0}
+  soundText: {fileID: 0}
   levelText: {fileID: 0}
   _UIgameObject:
   - {fileID: 0}
   - {fileID: 0}
+  Setting: {fileID: 0}
+  musicSource: {fileID: 0}
 --- !u!114 &5758061690125856529
 MonoBehaviour:
   m_ObjectHideFlags: 0

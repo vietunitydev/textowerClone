@@ -15,7 +15,7 @@ public class SceneNumberManager : MonoBehaviour
         { "Level6", 35 },
     };
 
-    public int GetSceneNumber()
+    public int GetNumberWordofScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         Debug.Log(currentSceneName);

@@ -20,11 +20,6 @@ public class LoadData : MonoBehaviour
             wordTower.Add(tuple.Item2);
         }
 
-        //Debug.Log("****************");
-        //Debug.Log(wordTower.Count); //11
-        //Debug.Log(hiddenIndexList.Count);
-        //Debug.Log("****************");
-
     }
 
     public void SetIndexLevel(int value)

@@ -9,13 +9,13 @@ using UnityEngine;
 public class WordTower : MonoBehaviour
 {
     //public static WordTower instance;
-    
+    [SerializeField] SpawnExplodePrefab spanwExplodePrefab;
     private List<string> wordTower = new List<string>();
     private List<int> hiddenIndexList = new List<int>();
     public List<WordHandler> wordHandlers = new List<WordHandler>();
     public GameManager gameManager;
     public LoadData loadData;
-
+    [SerializeField] AudioManager audioManager;
     public List<string> WordTower1 { get => wordTower; set => wordTower = value; }
     public List<int> HiddenIndexList { get => hiddenIndexList; set => hiddenIndexList = value; }
 
@@ -55,6 +55,7 @@ public class WordTower : MonoBehaviour
             }
 
             gameManager.shakeObjectifTure();
+            audioManager.PlaySound(4);
             gameManager.UpdateCurrentWord();
             gameManager.SetColor(); // for (0-3)
             wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched
@@ -65,6 +66,8 @@ public class WordTower : MonoBehaviour
         {
             //StartCoroutine(WaitToNextFunc());
             gameManager.shakeObject();
+            audioManager.PlaySound(3);
+            spanwExplodePrefab.SpawnExplodeFrefab();
             gameManager.SetCurrentHealth();
             if (gameManager.GetHeath() == 0)
             {

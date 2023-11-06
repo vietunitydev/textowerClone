@@ -1,32 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class TestScripts : MonoBehaviour
 {
+    Rigidbody body;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(CallFunction());
-
-        Debug.Log("1");
+        AddForceForChildrent();
     }
 
-    public IEnumerator CallFunction()
+    private void AddForceForChildrent()
     {
-        Debug.Log("---");
-        yield return new WaitForSeconds(2f);
-        gameObject.transform.position = new Vector3 (0, 1, 0);
-        Debug.Log("---");
-        yield return new WaitForSeconds(5f);
-        Debug.Log("---");
-        UpdatePosition();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            body = child.AddComponent<Rigidbody>();
+            Vector3 randomDerection = new Vector3(Random.Range(-1, 2), Random.Range(-2, 2), Random.Range(2, 3));
+            Debug.Log(randomDerection);
+            body.AddForce(randomDerection * 5, ForceMode.Impulse);
+        }
     }
 
-    public void UpdatePosition()
-    {
-        Debug.Log("---//");
-        gameObject.transform.position = new Vector3(0, -1, 0);
-        Debug.Log("---//");
-    }
 }

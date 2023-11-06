@@ -59,16 +59,20 @@ public class GenerateWord : MonoBehaviour
         int hidden = 4;
         tuples.Add(Tuple.Create(hidden, temp));
 
-        int n = SceneNumberManager.GetSceneNumber();
+        int n = SceneNumberManager.GetNumberWordofScene();
+
         for (int i = 0; i < n-1; i++)
         {
 
             int r = ran.Next(0, 3);
             char letter = temp[r];
 
-            int w = ran.Next(0, dic[letter].Count);
-            temp = dic[letter][w];
-
+            while (tuples.Any(tuple => tuple.Item2 == temp))
+            {
+                int w = ran.Next(0, dic[letter].Count);
+                temp = dic[letter][w];
+            }
+            
             for (int j = 0; j < 4; j++)
             {
                 if (temp[j] == letter)
