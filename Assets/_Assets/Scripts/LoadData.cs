@@ -20,17 +20,5 @@ public class LoadData : MonoBehaviour
         }
     }
 
-    public void SetIndexLevel(int value)
-    {
-        PlayerPrefs.SetInt("level", value);
-        PlayerPrefs.Save();
-    }
-
-    public int GetIndexLevel()
-    {
-        int i = PlayerPrefs.GetInt("level", 0);
-        return i;
-    }
-
 }
 

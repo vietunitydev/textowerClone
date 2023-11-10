@@ -12354,7 +12354,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8095203347853018487}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadNextScene
+        m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13331,6 +13331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNumberManager: {fileID: 7333102884002929933}
+  spawnWord: {fileID: 413512587}
   textAsset: {fileID: 4900000, guid: 695a6682a712cae49b645f3d642924dd, type: 3}
   words: []
 --- !u!224 &4468184610639276374
@@ -14756,15 +14757,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4116076bebd3438293cffaa3bee72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelIndex: 0
   _followCamera: {fileID: 821968838}
   _cubeDotween: {fileID: 9090727276162880156}
-  currentIndex: 0
+  currentIndexWord: 0
   _wordTower: {fileID: 0}
   currentWord: {fileID: 0}
   nextWord: {fileID: 0}
   loadData: {fileID: 8613495351953918843}
-  SceneNumberManager: {fileID: 7333102884002929933}
+  spawnWord: {fileID: 413512587}
 --- !u!1 &8116632444481236767
 GameObject:
   m_ObjectHideFlags: 0

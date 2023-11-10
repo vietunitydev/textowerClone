@@ -7,9 +7,8 @@ public class LoadScenee : MonoBehaviour
 {
     static string[] _sceneName = new string[] { "Level1", "EndScene" };
 
-    static public void _LoadScene(int index)
+    static public void LoadPlayScene(int index)
     {
-        Debug.Log(_sceneName[index]);
         SceneManager.LoadScene(_sceneName[index]);
     }
 }

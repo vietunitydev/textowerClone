@@ -9,21 +9,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int _levelIndex;
+    private int _levelIndex;
     public GameObject _followCamera;
 
     public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
     private int numberWordofScene;
-    [SerializeField] private int currentIndex = 0;
+    [SerializeField] private int currentIndexWord = 0;
     
     public WordTower _wordTower;
     public WordHandler currentWord;
     public WordHandler nextWord;
 
     public LoadData loadData;
-    public SceneNumberManager SceneNumberManager;
+    public SpawnWord spawnWord;
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         _uiHealth = GetComponent<UIHealth>();
         _uiManager = GetComponent<UIManager>();
         _uiHealth.UpdateHealth();
-        numberWordofScene = SceneNumberManager.GetNumberWordofScene();
+        numberWordofScene = spawnWord.GetNumberWordofScene();
         SetColor();
         
     }
@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
     // WIN 
     public void WinGame()
     {
+        // SO index + 1
+        int levelIndex = spawnWord.GetIndexPlayerPref()+1;
+        spawnWord.SetIndexPlayerPref(levelIndex);
         _uiManager.Win();
     }
     //LOSE
@@ -80,16 +83,7 @@ public class GameManager : MonoBehaviour
             currentWord.letterHandlers[i].DisplayColorGreen();
         }
     }
-    
-    public void PlayExplodeParticalSystem()
-    {            
-        //_positionParticalsystem = nextWord.letterHandlers[nextWord._hiddenIndex].transform;
-        //_particalsystemGameObject.transform.position = _positionParticalsystem.position;
-        //_particleSystem.Play();   
-    }
-    
-
-    // co the la do 
+        
 
     public void shakeObject()
     {
@@ -115,8 +109,7 @@ public class GameManager : MonoBehaviour
             {
                 if ((nextWord.letterHandlers[i]._cubeDotween != null))
                 {
-                    Debug.LogWarning(nextWord.letterHandlers[i]._cubeDotween.name);
-                    Debug.Log("*");
+                    //Debug.LogWarning(nextWord.letterHandlers[i]._cubeDotween.name);
                     nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenTure();
                 }
                 
@@ -126,16 +119,16 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        LoadScenee._LoadScene(0);
+        LoadScenee.LoadPlayScene(0);
     }
 
     public void UpdateCurrentWord()
     {
-        currentIndex += 1;
-        if (currentIndex > numberWordofScene -2 ) // n-2
-            nextWord = _wordTower.wordHandlers[currentIndex];
-        else nextWord = _wordTower.wordHandlers[currentIndex + 1];
-        currentWord = _wordTower.wordHandlers[currentIndex];
+        currentIndexWord += 1;
+        if (currentIndexWord > numberWordofScene -2 ) // n-2
+            nextWord = _wordTower.wordHandlers[currentIndexWord];
+        else nextWord = _wordTower.wordHandlers[currentIndexWord + 1];
+        currentWord = _wordTower.wordHandlers[currentIndexWord];
         
     }
 

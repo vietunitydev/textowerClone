@@ -11,7 +11,10 @@ using System.Text;
 
 public class GenerateWord : MonoBehaviour
 {
-    public SceneNumberManager SceneNumberManager;
+    /// <summary>
+    /// //////////////////////////
+    /// </summary>
+    public SpawnWord spawnWord;
     public TextAsset textAsset;
     //[SerializeField] string text;
     [SerializeField] string[] words;
@@ -59,8 +62,8 @@ public class GenerateWord : MonoBehaviour
         int hidden = 4;
         tuples.Add(Tuple.Create(hidden, temp));
 
-        int n = SceneNumberManager.GetNumberWordofScene();
-
+        int n = spawnWord.GetNumberWordofScene();
+        Debug.LogWarning(n);
         for (int i = 0; i < n-1; i++)
         {
 

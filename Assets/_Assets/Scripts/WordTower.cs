@@ -13,7 +13,7 @@ public class WordTower : MonoBehaviour
     private List<string> wordTower = new List<string>();
     private List<int> hiddenIndexList = new List<int>();
 
-    public List<WordHandler> wordHandlers; //= new List<WordHandler>();
+    public List<WordHandler> wordHandlers = new List<WordHandler>();
     
     public GameManager gameManager;
     public LoadData loadData;
