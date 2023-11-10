@@ -13,13 +13,11 @@ public class LoadData : MonoBehaviour
         wordTower.Clear();
         hiddenIndexList.Clear();
 
-        var log = new StringBuilder();
         foreach (var tuple in generateWord.tuples)
         {
             hiddenIndexList.Add(tuple.Item1);
             wordTower.Add(tuple.Item2);
         }
-
     }
 
     public void SetIndexLevel(int value)

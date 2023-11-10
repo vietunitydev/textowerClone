@@ -92,7 +92,6 @@ public class GenerateWord : MonoBehaviour
         ReadFile();
         CreateDictionaryformText(words, dic);
         CreateNewListFormDic(dic, tuples);
-        // Debug.LogWarning("****" + tuples.Count);    
     }
    
     

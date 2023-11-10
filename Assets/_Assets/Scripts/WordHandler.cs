@@ -21,7 +21,7 @@ public class WordHandler : MonoBehaviour
 
     private void Start()
     {
-        //Init();
+        gameManager = FindObjectOfType<GameManager>();
     }
     
     public void Init()

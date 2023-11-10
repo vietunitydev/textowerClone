@@ -3592,7 +3592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8a8c59e160e8542a3cfc3cec8930a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spanwExplodePrefab: {fileID: 177099446178824037, guid: ade21b571d70de44bbdb9fd20f5bf3fa, type: 3}
   wordHandlers: []
+  gameManager: {fileID: 7346129451473660232, guid: 5b2629a02a00a884ea2c5e738796cdf2, type: 3}
+  loadData: {fileID: 1426354601477052367, guid: 5b2629a02a00a884ea2c5e738796cdf2, type: 3}
+  audioManager: {fileID: 0}
 --- !u!1 &7540539551165435597
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,10 +12,6 @@ public class GameManager : MonoBehaviour
     public int _levelIndex;
     public GameObject _followCamera;
 
-    //public GameObject _particalsystemGameObject;
-    //private ParticleSystem _particleSystem;
-    //private Transform _positionParticalsystem;
-
     public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
@@ -24,18 +20,21 @@ public class GameManager : MonoBehaviour
     
     public WordTower _wordTower;
     public WordHandler currentWord;
-
     public WordHandler nextWord;
+
     public LoadData loadData;
     public SceneNumberManager SceneNumberManager;
 
     private void Start()
     {
-        
+        _wordTower = FindObjectOfType<WordTower>();
+        currentWord = _wordTower.wordHandlers[0];
+        nextWord = _wordTower.wordHandlers[1];
+
         _uiHealth = GetComponent<UIHealth>();
         _uiManager = GetComponent<UIManager>();
         _uiHealth.UpdateHealth();
-        numberWordofScene = SceneNumberManager.GetNumberWord();
+        numberWordofScene = SceneNumberManager.GetNumberWordofScene();
         SetColor();
         
     }
@@ -53,8 +52,6 @@ public class GameManager : MonoBehaviour
     // WIN 
     public void WinGame()
     {
-        _levelIndex = loadData.GetIndexLevel()+1;
-        loadData.SetIndexLevel(_levelIndex);
         _uiManager.Win();
     }
     //LOSE
@@ -129,18 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        LoadScenee._LoadScene(loadData.GetIndexLevel());
-    }
-
-    public void LoadNextScene()
-    {
-        LoadScenee._LoadScene(loadData.GetIndexLevel());
-    }
-
-    public void ResetScene()
-    {
-        loadData.SetIndexLevel(0);
-        LoadScenee._LoadScene(loadData.GetIndexLevel());
+        LoadScenee._LoadScene(0);
     }
 
     public void UpdateCurrentWord()

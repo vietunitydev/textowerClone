@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a86a55d3e029143a549061afe331a5, type: 3}
+  m_Name: LevelSO 3
+  m_EditorClassIdentifier: 
+  tower: {fileID: 2777657990800581703, guid: 9523b16c42965e44c942ab4c78cc8e96, type: 3}
+  numberWord: 25
+  Word: {fileID: 5460836249497693357, guid: bcbcd9e227dc950458a42541b4d8d7ab, type: 3}

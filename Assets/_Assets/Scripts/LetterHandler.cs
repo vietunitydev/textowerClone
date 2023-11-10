@@ -67,7 +67,7 @@ public class LetterHandler : MonoBehaviour
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
 
-        _audioManager.PlaySound(0);
+        //_audioManager.PlaySound(0);
         //var checkLetter = _letter;
 
         if (true)

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Letter
+  - GameManager
+  - AudioManager
+  - SpawnExplodePrefabs
   layers:
   - Default
   - TransparentFX

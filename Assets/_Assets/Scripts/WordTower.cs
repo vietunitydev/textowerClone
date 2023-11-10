@@ -12,20 +12,32 @@ public class WordTower : MonoBehaviour
     [SerializeField] SpawnExplodePrefab spanwExplodePrefab;
     private List<string> wordTower = new List<string>();
     private List<int> hiddenIndexList = new List<int>();
-    public List<WordHandler> wordHandlers = new List<WordHandler>();
+
+    public List<WordHandler> wordHandlers; //= new List<WordHandler>();
+    
     public GameManager gameManager;
     public LoadData loadData;
-    [SerializeField] AudioManager audioManager;
+    public AudioManager audioManager;
     public List<string> WordTower1 { get => wordTower; set => wordTower = value; }
     public List<int> HiddenIndexList { get => hiddenIndexList; set => hiddenIndexList = value; }
 
-    private void Start()
+    public void Start()
     {
-        loadData.ReadFileText(wordTower, hiddenIndexList);
-        wordTower.Log(); // là 1 list nh?ng count b?ng 0
-        hiddenIndexList.Log(); // là 1 list nh?ng count b?ng 0
-        LoadWord();
 
+        GameObject audioM = GameObject.FindGameObjectWithTag("AudioManager");
+        GameObject spawnEP = GameObject.FindGameObjectWithTag("SpawnExplodePrefabs");
+        audioManager = audioM.GetComponent<AudioManager>();
+        spanwExplodePrefab = spawnEP.GetComponent<SpawnExplodePrefab>();
+        GameObject gameM = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = gameM.GetComponent<GameManager>();
+        loadData = gameM.GetComponent<LoadData>();
+
+
+        loadData.ReadFileText(wordTower, hiddenIndexList);
+        Debug.Log("wordTower ReadFileText");
+        //wordTower.Log(); // là 1 list nh?ng count b?ng 0
+        //hiddenIndexList.Log(); // là 1 list nh?ng count b?ng 0
+        LoadWord();
     }
     
 

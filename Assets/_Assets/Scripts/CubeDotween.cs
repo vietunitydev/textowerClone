@@ -22,7 +22,6 @@ public class CubeDotween : MonoBehaviour
 
     public void MoveToHiddenLetter(char checkLetter, int _indexParentWord)
     {
-        //tinh diem tren parabol
         Vector3 midPoint = (startTransform.position + endTransform.position) / 2;
         midPoint -= Vector3.forward * parabolaHeight;
 
