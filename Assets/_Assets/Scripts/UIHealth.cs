@@ -38,8 +38,10 @@ public class UIHealth : MonoBehaviour
     // tru di mot trai tim khi match sai
     public void SetHealth(int damage)
     {
-        currenHealth -= damage;
-       // Debug.Log(currenHealth);
+        if(currenHealth < 6)
+        {
+            currenHealth += damage;
+        }
 
     }
 

@@ -4,7 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
 
-public class TestScripts : MonoBehaviour
+public class TestScripts
+    : MonoBehaviour
 {
     Rigidbody body;
     // Start is called before the first frame update

@@ -8,6 +8,6 @@ public class LevelSO : ScriptableObject
     public GameObject tower;
     public int numberWord;
     public GameObject Word;
-    
+    public int numberHeart;
 
 }

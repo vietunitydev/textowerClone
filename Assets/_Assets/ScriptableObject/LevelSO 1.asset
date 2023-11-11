@@ -15,3 +15,4 @@ MonoBehaviour:
   tower: {fileID: 84263668559009913, guid: 8c9f26314aa4c7243a0d0377a9cc8761, type: 3}
   numberWord: 15
   Word: {fileID: 5460836249497693357, guid: bcbcd9e227dc950458a42541b4d8d7ab, type: 3}
+  numberHeart: 2

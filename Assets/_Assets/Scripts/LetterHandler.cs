@@ -68,14 +68,13 @@ public class LetterHandler : MonoBehaviour
         var checkLetter = letter._letter;
 
         //_audioManager.PlaySound(0);
-        //var checkLetter = _letter;
 
         if (true)
         {
-               _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
+               _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter( _indexParentWord);
         }
 
-        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(checkLetter, _indexParentWord);
+        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter( _indexParentWord);
         _cubeDotween.MoveToHiddenLetter(checkLetter, _indexParentWord);
 
     }

@@ -10,20 +10,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private int _levelIndex;
-    public GameObject _followCamera;
-
-    public CubeDotween _cubeDotween;
     private UIManager _uiManager;
     private UIHealth _uiHealth;
     private int numberWordofScene;
     [SerializeField] private int currentIndexWord = 0;
-    
+
+    public GameObject _followCamera;
+    public CubeDotween _cubeDotween;
     public WordTower _wordTower;
     public WordHandler currentWord;
     public WordHandler nextWord;
 
     public LoadData loadData;
     public SpawnWord spawnWord;
+
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     // CAMERA FOLLOW WORDTOWER
     public void UpdateCamera()
     {
-        _followCamera.transform.position = new Vector3(_followCamera.transform.position.x, _followCamera.transform.position.y + 1.5f, _followCamera.transform.position.z);
+        _followCamera.transform.position = new Vector3(_followCamera.transform.position.x, _followCamera.transform.position.y + 1.6f, _followCamera.transform.position.z);
         _cubeDotween.camMove();
     }
     public void MovebyPositionFollowCamera()
@@ -65,9 +65,9 @@ public class GameManager : MonoBehaviour
     }
 
     // SET HEATH IN UIManager
-    public void SetCurrentHealth()
+    public void SetCurrentHealth(int damage)
     {
-        _uiHealth.SetHealth(1);
+        _uiHealth.SetHealth(damage);
         _uiHealth.UpdateHealth();
     }
     public int GetHeath()
@@ -93,8 +93,6 @@ public class GameManager : MonoBehaviour
             {
                 if ((nextWord.letterHandlers[i]._cubeDotween != null))
                 {
-                    Debug.LogWarning(nextWord.letterHandlers[i]._cubeDotween.name);
-                    Debug.Log("*");
                     nextWord.letterHandlers[i]._cubeDotween.shakeCubeWhenFalse();
                 }
             }
@@ -132,4 +130,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public bool GetBoolCheckHeart(int indexParent)
+    {
+        return spawnWord.ReturnBoolCheckHeart(indexParent);
+    }
 }

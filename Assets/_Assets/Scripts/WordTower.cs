@@ -45,7 +45,6 @@ public class WordTower : MonoBehaviour
     {
         for(int i = 0; i < wordHandlers.Count; i++) 
         {
-            //Debug.Log("*************" + wordTower[i]);
             var word = wordTower[i];
             wordHandlers[i].SetWord(word, hiddenIndexList[i],i);
             wordHandlers[i].Init();
@@ -55,7 +54,6 @@ public class WordTower : MonoBehaviour
 
     public void Check(char checkLetter, int _indexParentWord)
     {
-        //int index = wordTower.IndexOf(_parentWord);
 
         if (wordHandlers[_indexParentWord + 1].CheckWord(checkLetter))  //tham chieu den WordHandler tiep theo
         {
@@ -72,15 +70,19 @@ public class WordTower : MonoBehaviour
             gameManager.SetColor(); // for (0-3)
             wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched
             gameManager.UpdateCamera(); // di chuyen camera len khi correct (dotween)
+            if (gameManager.GetBoolCheckHeart(_indexParentWord+1))
+            {
+                gameManager.SetCurrentHealth(1);
+            }
+            
         }
 
         else
         {
-            //StartCoroutine(WaitToNextFunc());
             gameManager.shakeObject();
             audioManager.PlaySound(3);
             spanwExplodePrefab.SpawnExplodeFrefab();
-            gameManager.SetCurrentHealth();
+            gameManager.SetCurrentHealth(-1); //  khi sai
             if (gameManager.GetHeath() == 0)
             {
                 gameManager.LoseGame();
@@ -90,10 +92,8 @@ public class WordTower : MonoBehaviour
         }
     }
 
-    public Transform ReturnTranformOfHiddenNextLetter(char checkLetter, int _indexParentWord)
+    public Transform ReturnTranformOfHiddenNextLetter( int _indexParentWord)
     {
-        //int index = wordTower.IndexOf(_parentWord);
-
         return wordHandlers[_indexParentWord + 1].letterHandlers[wordHandlers[_indexParentWord + 1]._hiddenIndex].transform;
     }
 

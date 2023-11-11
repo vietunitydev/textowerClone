@@ -16,7 +16,6 @@ public class GenerateWord : MonoBehaviour
     /// </summary>
     public SpawnWord spawnWord;
     public TextAsset textAsset;
-    //[SerializeField] string text;
     [SerializeField] string[] words;
     public Dictionary<char, List<string>> dic = new Dictionary<char, List<string>>();
     public List<Tuple<int, string>> tuples = new List<Tuple<int, string>>();
@@ -63,7 +62,7 @@ public class GenerateWord : MonoBehaviour
         tuples.Add(Tuple.Create(hidden, temp));
 
         int n = spawnWord.GetNumberWordofScene();
-        Debug.LogWarning(n);
+        //Debug.LogWarning(n);
         for (int i = 0; i < n-1; i++)
         {
 
