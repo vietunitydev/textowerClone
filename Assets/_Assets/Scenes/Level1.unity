@@ -251,6 +251,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a8d571e00751ef46b0d467894848e6f, type: 2}
   - {fileID: 11400000, guid: b0bfd76776816404c8bd6b017590b882, type: 2}
   - {fileID: 11400000, guid: 4bc81aa63fe7262459b112c07b2bd641, type: 2}
+  - {fileID: 11400000, guid: 77e7d713c9b9c95429fba6ca6efc94d2, type: 2}
+  - {fileID: 11400000, guid: 6323b1666972fa14da75b4b1b013699e, type: 2}
+  - {fileID: 11400000, guid: 56eb06ba464e2f04f8156ba71b109a66, type: 2}
+  - {fileID: 11400000, guid: bd7e6f0038439b54e8469c3228b6f625, type: 2}
+  - {fileID: 11400000, guid: e79077702f8682a4d949f67409244736, type: 2}
+  - {fileID: 11400000, guid: da1d745f9e8465e499021bcb4dd7b7c1, type: 2}
+  - {fileID: 11400000, guid: 84c34a335868e374abca02475cefb57e, type: 2}
+  - {fileID: 11400000, guid: 412c52c02050fd549ba30a3bae0ef57d, type: 2}
+  - {fileID: 11400000, guid: 1fe88f795cdb9b7468c03625491319b9, type: 2}
+  - {fileID: 11400000, guid: fa0e79213d784ff4c9999d00d00ec0ca, type: 2}
+  - {fileID: 11400000, guid: c12e1ca1363185e4ca603d5b473241c6, type: 2}
+  - {fileID: 11400000, guid: 231d9dbb2f6944f46bc17fb96f236d27, type: 2}
   HealthHeart: {fileID: 8351752418317238239, guid: 2bad4200edb91494594424583f4dd1b2, type: 3}
   generateWord: {fileID: 4433228339380816104}
 --- !u!1 &554588521
@@ -11983,7 +11995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 308}
+  m_AnchoredPosition: {x: 0, y: -4}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &942126831803855130
@@ -12287,10 +12299,10 @@ RectTransform:
   - {fileID: 8474848550949917201}
   m_Father: {fileID: 7962927531149177572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 231}
+  m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737998239685986318
 MonoBehaviour:
@@ -13315,8 +13327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnWord: {fileID: 413512587}
-  textAsset: {fileID: 4900000, guid: 695a6682a712cae49b645f3d642924dd, type: 3}
+  textGenerate: {fileID: 4900000, guid: 695a6682a712cae49b645f3d642924dd, type: 3}
+  textCorrect: {fileID: 4900000, guid: 436d42f39c8031d4a82ab929ad0a04c5, type: 3}
   words: []
+  wordsCorrect: []
 --- !u!224 &4468184610639276374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13781,10 +13795,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1732976734881363807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 633}
-  m_SizeDelta: {x: 600, y: 350}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -125}
+  m_SizeDelta: {x: 600, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5524835265575487373
 CanvasRenderer:
@@ -14374,9 +14388,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 413512587}
-        m_TargetAssemblyTypeName: SpawnWord, Assembly-CSharp
-        m_MethodName: TestSpawnHeart
+      - m_Target: {fileID: 8095203347853018487}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14668,9 +14682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4116076bebd3438293cffaa3bee72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentIndexWord: 0
   _followCamera: {fileID: 821968838}
   _cubeDotween: {fileID: 9090727276162880156}
-  currentIndexWord: 0
   _wordTower: {fileID: 0}
   currentWord: {fileID: 0}
   nextWord: {fileID: 0}
@@ -14870,8 +14884,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3dda7f5b7cf88e647a10f5267a5b178b, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -15021,7 +15035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -98}
+  m_AnchoredPosition: {x: 0, y: -407}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8806992755834357159

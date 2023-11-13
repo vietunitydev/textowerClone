@@ -11,17 +11,17 @@ public class LetterHandler : MonoBehaviour
     [SerializeField] private Text lable; 
     public char _letter; // 
 
-
     public ChangeColor letterDefault;
     private int _indexParentWord; //tu nay thuoc tu nao
     public  WordTower Tower; 
     public CubeDotween _cubeDotween;
-    [SerializeField] AudioManager _audioManager;
+    public AudioManager audioManager;
 
 
     private void Start()
     {
         Tower = FindObjectOfType<WordTower>();
+        audioManager = FindObjectOfType<AudioManager>();
         gameObject.GetComponent<ChangeColor>();
     }
 
@@ -61,24 +61,28 @@ public class LetterHandler : MonoBehaviour
     }
 
 
+    //public static bool isChecking=false;
 
     private void OnMouseDown() // an vao tu nao
     {
+
         LetterHandler letter = gameObject.GetComponent<LetterHandler>();
         var checkLetter = letter._letter;
 
-        //_audioManager.PlaySound(0);
+        audioManager.PlaySound(0);
 
         if (true)
         {
-               _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter( _indexParentWord);
+            _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(_indexParentWord);
         }
 
-        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter( _indexParentWord);
+        _cubeDotween.endTransform = Tower.ReturnTranformOfHiddenNextLetter(_indexParentWord);
         _cubeDotween.MoveToHiddenLetter(checkLetter, _indexParentWord);
 
+
+
     }
-    
+
     private void OnValidate()
     {
         Display(_letter);
@@ -97,4 +101,6 @@ public class LetterHandler : MonoBehaviour
     {
         letterDefault.SetMaterialBlue();
     }
+
+
 }

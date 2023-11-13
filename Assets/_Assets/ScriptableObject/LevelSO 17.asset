@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a86a55d3e029143a549061afe331a5, type: 3}
-  m_Name: LevelSO 3
+  m_Name: LevelSO 17
   m_EditorClassIdentifier: 
-  tower: {fileID: 84263668559009913, guid: 8c9f26314aa4c7243a0d0377a9cc8761, type: 3}
-  numberWord: 15
+  tower: {fileID: 1794772140089615, guid: 1bdee1afa5f857a4db56083119ab6a50, type: 3}
+  numberWord: 50
   Word: {fileID: 5460836249497693357, guid: bcbcd9e227dc950458a42541b4d8d7ab, type: 3}
-  numberHeart: 2
+  numberHeart: 3

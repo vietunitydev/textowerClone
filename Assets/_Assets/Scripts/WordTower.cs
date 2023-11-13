@@ -54,9 +54,11 @@ public class WordTower : MonoBehaviour
 
     public void Check(char checkLetter, int _indexParentWord)
     {
-
+       
         if (wordHandlers[_indexParentWord + 1].CheckWord(checkLetter))  //tham chieu den WordHandler tiep theo
         {
+            audioManager.PlaySound(4);
+
             if (_indexParentWord == wordTower.Count-2 ) // so luong cua word trong List word
             {
 
@@ -65,7 +67,6 @@ public class WordTower : MonoBehaviour
             }
 
             gameManager.shakeObjectifTure();
-            audioManager.PlaySound(4);
             gameManager.UpdateCurrentWord();
             gameManager.SetColor(); // for (0-3)
             wordHandlers[_indexParentWord].HiddenWord(checkLetter); // hiSdden word was matched

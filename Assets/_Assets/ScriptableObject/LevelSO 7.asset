@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a86a55d3e029143a549061afe331a5, type: 3}
   m_Name: LevelSO 7
   m_EditorClassIdentifier: 
-  tower: {fileID: 7455821341569132360, guid: 7be97a2717c603c4193844de85acb9af, type: 3}
-  numberWord: 75
+  tower: {fileID: 8495413514731009767, guid: 22adb1a6f74d95b448697db2ecb1c588, type: 3}
+  numberWord: 20
   Word: {fileID: 5460836249497693357, guid: bcbcd9e227dc950458a42541b4d8d7ab, type: 3}
-  numberHeart: 4
+  numberHeart: 2

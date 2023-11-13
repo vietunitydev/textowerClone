@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -57,17 +58,15 @@ public class WordHandler : MonoBehaviour
     //KIEM TRA VOI HIDDEN XEM CO TRUNG' HAY KHONG
     public bool CheckWord(char checkWord)
     {
-        Debug.Log("world hander . check()");
-        if (checkWord == letters[_hiddenIndex])
-        {          
+        if (CheckWithDictionaryGenerate(checkWord))
+        {
+            CheckWithDictionaryGenerate(checkWord);
             letterHandlers[_hiddenIndex].SetActiveWord();
             letterHandlers[_hiddenIndex].Display(checkWord);
-            Debug.Log("world hander . check() -- true");
             return true;
         }
         else
         {
-            Debug.Log("world hander . check() -- false");
             return false;
         }
     }
@@ -85,4 +84,29 @@ public class WordHandler : MonoBehaviour
         }
     } 
     
+    public bool CheckWithDictionaryGenerate(char checkLetter)
+    {
+
+        var dic = gameManager.loadData.generateWord.dicCorrect;
+
+        if (dic.ContainsKey(checkLetter))
+        {
+            char[] letters = _word.ToCharArray();
+            letters[_hiddenIndex] = checkLetter;
+            string word = new string(letters);
+
+            if (dic[checkLetter][_hiddenIndex].Contains(word))
+            {
+                //Debug.LogWarning("true");
+                _word = word;
+                return true;
+            }
+
+        }
+
+        return false;
+
+    }
+    
+
 }

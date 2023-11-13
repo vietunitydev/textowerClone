@@ -19,7 +19,7 @@ public class ExplodeCube : MonoBehaviour
             Transform child = transform.GetChild(i);
             body = child.AddComponent<Rigidbody>();
             Vector3 randomDerection = new Vector3(Random.Range(-1, 2), Random.Range(-2, 2), Random.Range(2, 3));
-            Debug.Log(randomDerection);
+            //Debug.Log(randomDerection);
             body.AddForce(randomDerection * 5, ForceMode.Impulse);
         }
     }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a86a55d3e029143a549061afe331a5, type: 3}
   m_Name: LevelSO 9
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
-  numberWord: 0
-  Word: {fileID: 0}
+  tower: {fileID: 2777657990800581703, guid: 9523b16c42965e44c942ab4c78cc8e96, type: 3}
+  numberWord: 25
+  Word: {fileID: 5460836249497693357, guid: bcbcd9e227dc950458a42541b4d8d7ab, type: 3}
+  numberHeart: 3

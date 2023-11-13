@@ -23,7 +23,6 @@ public class SpawnExplodePrefab : MonoBehaviour
         nextWordHandler = gameManager.nextWord;
         position = nextWordHandler.letterHandlers[nextWordHandler._hiddenIndex].transform.position;
         position = position + new Vector3(0, 0, 2);
-        Debug.Log(position);
         GameObject gobject = Instantiate(gameObjectPrefabs, position, Quaternion.identity);
         yield return new WaitForSeconds(3);
         gobject.SetActive(false);

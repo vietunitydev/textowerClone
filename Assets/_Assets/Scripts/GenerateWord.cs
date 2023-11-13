@@ -15,21 +15,26 @@ public class GenerateWord : MonoBehaviour
     /// //////////////////////////
     /// </summary>
     public SpawnWord spawnWord;
-    public TextAsset textAsset;
+    public TextAsset textGenerate;
+    public TextAsset textCorrect;
+    
     [SerializeField] string[] words;
-    public Dictionary<char, List<string>> dic = new Dictionary<char, List<string>>();
+    [SerializeField] string[] wordsCorrect;
+
+    public Dictionary<char, List<string>> dicGenerate = new Dictionary<char, List<string>>();
+    public Dictionary<char, Dictionary<int, List<string>>> dicCorrect = new Dictionary<char, Dictionary<int, List<string>>>();
     public List<Tuple<int, string>> tuples = new List<Tuple<int, string>>();
 
     void ReadFile()
     {
-        string text = textAsset.text;
+        string text = textGenerate.text;
         words = text.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
     }
 
     //create dictionary luu cac key = letter
     //                          value = list cac tu co chua letter trong chu cua no
 
-    void CreateDictionaryformText( string[] words, Dictionary<char, List<string>> dic)
+    void CreateDictionaryformText()
     {
         for (int i = 0; i < words.Length; i++)
         {
@@ -38,12 +43,12 @@ public class GenerateWord : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 char letter = letters[j];
-                if (!dic.ContainsKey(letter))
+                if (!dicGenerate.ContainsKey(letter))
                 {
-                    dic[letter] = new List<string>();
+                    dicGenerate[letter] = new List<string>();
                     //Debug.LogWarning(dic.Count);
                 }
-                dic[letter].Add(words[i]);
+                dicGenerate[letter].Add(words[i]);
             }
         }
         var trinbuilder = new StringBuilder();
@@ -53,26 +58,30 @@ public class GenerateWord : MonoBehaviour
 
     //create List gom cac tuple co kha nang chua
     // hidden letter ---- Word
-    void CreateNewListFormDic(Dictionary<char, List<string>> dic, List<Tuple<int, string>> tuples)
+    void CreateNewListFormDic()
     {
         // add tuple dau tien cho list
         System.Random ran = new System.Random();
-        string temp = dic['A'][ran.Next(0, dic['A'].Count)];
+        string temp = dicGenerate['A'][ran.Next(0, dicGenerate['A'].Count)];
         int hidden = 4;
         tuples.Add(Tuple.Create(hidden, temp));
 
         int n = spawnWord.GetNumberWordofScene();
-        //Debug.LogWarning(n);
+        int randomIndexLetter = 4;
         for (int i = 0; i < n-1; i++)
         {
 
-            int r = ran.Next(0, 3);
-            char letter = temp[r];
+            while (randomIndexLetter==hidden)
+            {
+                randomIndexLetter = ran.Next(0, 3);
+            }
+
+            char letter = temp[randomIndexLetter];
 
             while (tuples.Any(tuple => tuple.Item2 == temp))
             {
-                int w = ran.Next(0, dic[letter].Count);
-                temp = dic[letter][w];
+                int randomWord = ran.Next(0, dicGenerate[letter].Count);
+                temp = dicGenerate[letter][randomWord];
             }
             
             for (int j = 0; j < 4; j++)
@@ -88,13 +97,65 @@ public class GenerateWord : MonoBehaviour
         }
     }
 
+
+
+    //=================
+
+    void ReadFileCorrect()
+    {
+        string text = textCorrect.text;
+        wordsCorrect = text.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    //create dictionary luu cac key = letter
+    //                          value = list cac tu co chua letter trong chu cua no
+
+    void CreateDictionaryformTextCorrect()
+    {
+        for (int i = 0; i < wordsCorrect.Length; i++)
+        {
+            char[] letters = wordsCorrect[i].ToCharArray();
+
+            for (int j = 0; j < 4; j++)
+            {
+                char letter = letters[j];
+                if (!dicCorrect.ContainsKey(letter))
+                {
+                    dicCorrect[letter] = new Dictionary<int, List<string>>();
+                }
+
+                Dictionary<int, List<string>> dicSub = dicCorrect[letter];
+                if (!dicSub.ContainsKey(j))
+                {
+                    dicSub[j] = new List<string>();
+                }
+
+
+                dicSub[j].Add(wordsCorrect[i]);
+
+            }
+
+        }
+
+    }
+
+
+
+    //================
+
+
+
     private void Awake()
     {
 
         ReadFile();
-        CreateDictionaryformText(words, dic);
-        CreateNewListFormDic(dic, tuples);
+        CreateDictionaryformText();
+        CreateNewListFormDic();
+        //----correct
+
+        ReadFileCorrect();
+        CreateDictionaryformTextCorrect();
     }
-   
-    
+
+
 }

@@ -55,7 +55,6 @@ public class SpawnWord : MonoBehaviour
             {
                 int indexHiddentWord = generateWord.tuples[i].Item1;
                 Transform b = wordTowerClone.ReturnTranformOfHiddenNextLetter(i-1);
-                Debug.LogWarning("testSpawnHeart" + b.position + " " + i);
 
                 GameObject _heart = Instantiate(HealthHeart, b.position, Quaternion.identity, transform);
                 _heart.name = "Heart" + indexofheart;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,9 +13,7 @@ public class UIManager : MonoBehaviour
     private bool isWinGame=false;
     private bool isLoseGame=false;
     private bool onSetting = false;
-    public static bool music = false;
-    
-    public static bool sound = false;
+
     
     public Text musicText;
     public Text soundText;
@@ -22,8 +21,11 @@ public class UIManager : MonoBehaviour
     public GameObject[] _UIgameObject;  
     public GameObject Setting;
     [SerializeField] AudioManager musicSource;
+
     private void Start()
     {
+
+        DisplayIndexLevel();
         ClickOnMusic();
         ClickOnSound();
     }
@@ -32,6 +34,8 @@ public class UIManager : MonoBehaviour
     {
         isWinGame = true;
         isLoseGame = false;
+        UpdateUILevel();
+        musicSource.PasueSound();
         musicSource.PlaySound(1);
         _UIgameObject[0].SetActive(isWinGame); //UI Win
     }
@@ -40,15 +44,72 @@ public class UIManager : MonoBehaviour
     {
         isWinGame = false;
         isLoseGame = true;
+        musicSource.PasueSound();
         musicSource.PlaySound(2);
         _UIgameObject[1].SetActive(isLoseGame); //UI Lose
     }
     public void UpdateUILevel()
     {
-        int currentSceneName = SceneManager.GetActiveScene().buildIndex;
-        currentSceneName++;
-        levelText.text = "Level " + currentSceneName;
+        int nextIndexLevel = GetIndexLevelPlayerPrefs()+1;
+        SetIndexLevelPlayerPrefs(nextIndexLevel);
     }
+    public void DisplayIndexLevel()
+    {
+        levelText.text = "Level " + GetIndexLevelPlayerPrefs();
+    }
+
+    //  get set playerPrefs
+    public int GetIndexLevelPlayerPrefs()
+    {
+        return PlayerPrefs.GetInt("indexLevel",1);
+    }
+
+    public void SetIndexLevelPlayerPrefs(int index)
+    {
+        PlayerPrefs.SetInt("indexLevel",index);
+    }
+    //---------
+    public int GetMusicPlayerPrefs()
+    {
+        return PlayerPrefs.GetInt("music", 0);
+    }
+
+    public void SetMusicPlayerPrefs(int index)
+    {
+        PlayerPrefs.SetInt("music", index);
+    }
+    //--------
+    public int GetSoundPlayerPrefs()
+    {
+        return PlayerPrefs.GetInt("sound", 0);
+    }
+
+    public void SetSoundPlayerPrefs(int index)
+    {
+        PlayerPrefs.SetInt("sound", index);
+    }
+    //------
+    public static int GetPlayerPrefs (string name)
+    {
+        return PlayerPrefs.GetInt(name, 0);
+    }
+
+    public static void SetPlayerPrefs(string name, int index)
+    {
+        PlayerPrefs.SetInt(name, index);
+    }
+
+
+    //get set playerprefs
+    // string : indexLevel, music, sound;
+
+
+
+
+
+    //BUTTON  
+
+
 
     public void OnSetting()
     {
@@ -58,17 +119,31 @@ public class UIManager : MonoBehaviour
     }
     public void OnMusic()
     {
-        music = !music;
+        if (GetMusicPlayerPrefs() == 1)
+        {
+            SetMusicPlayerPrefs(0);
+        }
+        else SetMusicPlayerPrefs(1);
         ClickOnMusic();
     }
     public void OnSound()
     {
-        sound = !sound;
+        if (GetSoundPlayerPrefs() == 1)
+        {
+            SetSoundPlayerPrefs(0);
+        }
+        else SetSoundPlayerPrefs(1);
         ClickOnSound();
     }
+
+
+    //
+
+
+
     public void ClickOnMusic()
     {
-        if (music)
+        if (GetMusicPlayerPrefs()==1)
         {
             musicText.text = "ON";
             musicSource.PlayMusic();
@@ -82,7 +157,7 @@ public class UIManager : MonoBehaviour
     }
     public void ClickOnSound()
     {
-        if (sound)
+        if (GetSoundPlayerPrefs()==1)
         {
             soundText.text = "ON";
             musicSource.PlaySound(0);

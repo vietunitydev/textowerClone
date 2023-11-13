@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor;
 using UnityEngine;
@@ -61,7 +62,6 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {      
         _uiManager.Lose();
-        Debug.Log("***** YOU LOSE *****");
     }
 
     // SET HEATH IN UIManager
@@ -117,6 +117,12 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
+        LoadScenee.LoadPlayScene(0);
+    }
+    public void ResetScene()
+    {
+        PlayerPrefs.SetInt("level",0);
+        PlayerPrefs.SetInt("indexLevel", 1);
         LoadScenee.LoadPlayScene(0);
     }
 

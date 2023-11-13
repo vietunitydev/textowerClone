@@ -9,11 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip[] changAudioClip;
 
 
-    private void Start()
-    {
-        //Sound = GetComponent<AudioSource>();
-    }
-
+    //
     public void PlayMusic()
     {
         backgroundMusic.Play();
@@ -22,10 +18,14 @@ public class AudioManager : MonoBehaviour
     {
         backgroundMusic.Pause();
     }
+    //
+
+
+
 
     public void PlaySound(int index)
     {
-        if(UIManager.sound) 
+        if(UIManager.GetPlayerPrefs("sound")==1) 
         {
             Sound.clip = changAudioClip[index];
             Sound.Play();
@@ -36,4 +36,8 @@ public class AudioManager : MonoBehaviour
     {
         Sound.Pause();
     }
+
+
+
+
 }
